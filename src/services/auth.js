@@ -45,14 +45,14 @@ export const createUser = async (user) => {
 };
 
 export const login = async (user) => {
-    const query = `SELECT id, username, password from users WHERE username= ${mysql.escape(user.username)}`;
+    const query = `SELECT user_id, username, password, email from users WHERE username= $1`;
 
-    const [rows] = await pool.promise().query(query);
-
-    if (!rows.length) {
+    const rows = await pool.query(query, [user.username]);
+    console.log('rows', rows);
+    if (!rows.rows.length) {
         throw new AuthenticationError('Not Authorized');
     }
-    const userAccount = rows[0];
+    const userAccount = rows.rows[0];
     if (!security.comparePassword(user.password, userAccount.password)) {
         throw new AuthenticationError('Username or Password mismatched');
     }
