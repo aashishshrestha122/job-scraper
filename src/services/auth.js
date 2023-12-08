@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import HttpStatus from "http-status-codes";
 
 import * as security from "../utils/security.js";
-// import pool from "../db.js";
+import pool from "../db.js";
 import config from "../config.js";
 import AuthenticationError from '../errors/authentication.js';
 
@@ -28,18 +28,17 @@ export const createUser = async (user) => {
                                     username,
                                     password,
                                     email,
-                                    created_at
+                                    created_on
                                 )
                                     VALUES
                                 (
-                                    $1, $2, $3. $4
+                                    $1, $2, $3, $4
                                 );`;
                 const values = [user.username, hash, user.email, dateTime];
 
-                const [result] = await pool.query(query, values);
-                console.log('result', result);
+                const result = await pool.query(query, values);
 
-                // return resolve(result.insertId);
+                return resolve(result.insertId);
             });
         });
     }

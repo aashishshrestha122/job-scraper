@@ -19,7 +19,7 @@ pool.connect()
     .catch(err => console.error('Error connecting to PostgreSQL', err))
     .finally(() => {
         // End the client connection when done
-        pool.end();
+        // pool.end();
     });
 
 export default pool;
