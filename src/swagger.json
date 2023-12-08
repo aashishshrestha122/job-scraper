@@ -1,0 +1,130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.1.1",
+        "title": "AIRTASK API Documentation",
+        "description": "Restful API Documentation for eightstorm",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "AIRTASK",
+            "description": "API Documentation of AIRTASK"
+        }
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization",
+            "description": "      Enter the token with the `Bearer: ` prefix, e.g. Bearer abcde12345"
+        }
+    },
+    "paths": {
+        "/api/auth/create-user": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Username/Password for the new user.",
+                        "example": {
+                            "username": "",
+                            "password": "",
+                            "email": ""
+                        }
+                    }
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Create new user",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/CreateUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "Username/Password for the new user.",
+                        "example": {
+                            "username": "",
+                            "password": ""
+                        }
+                    }
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Login": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "accessToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserDetails": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "string"
+                },
+                "time_zone": {
+                    "type": "string"
+                },
+                "group_id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
