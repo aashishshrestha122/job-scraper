@@ -7,11 +7,11 @@ const config = {
     },
     db: {
         connection: {
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_DATABASE,
+            host: process.env.DBHOST,
+            port: process.env.DBPORT,
+            user: process.env.DBUSER,
+            password: process.env.PASSWORD,
+            database: process.env.DATABASE,
         }
     }
 }
