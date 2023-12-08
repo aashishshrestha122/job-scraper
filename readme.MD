@@ -1,6 +1,6 @@
-## to run the project run the following commands
-### yarn install
-### yarn dev
+## To run the project run the following commands
+### `yarn install`
+### `yarn dev`
 
 
 ## For Migration 
