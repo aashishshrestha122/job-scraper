@@ -1,0 +1,63 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.1.1",
+        "title": "JOB-SCRAPER API Documentation",
+        "description": "Restful API Documentation for eightstorm",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "JOB-SCRAPER",
+            "description": "API Documentation of JOB-SCRAPER"
+        }
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization",
+            "description": "      Enter the token with the `Bearer: ` prefix, e.g. Bearer abcde12345"
+        }
+    },
+    "paths": {
+        "/api/jobs/get-all-jobs": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "",
+                        "example": {
+                            "page": "",
+                            "perPage": "50",
+                            "sortBy": "id",
+                            "sortDirection": "ASC"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Get All JOBS listed in seek",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            }
+        }
+    }
+}

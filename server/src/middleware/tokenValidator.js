@@ -1,5 +1,5 @@
 import * as security from '../utils/security.js';
-import { getUserDetail } from '../services/auth.js';
+import { getUserDetail } from '../services/job.js';
 import TokenError from '../errors/token.js';
 import AuthenticationError from '../errors/authentication.js';
 

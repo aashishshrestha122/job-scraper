@@ -6,7 +6,7 @@ import './db.js';
 import config from './config.js';
 import * as errorHandler from './middleware/errorHandler.js';
 
-import authRoutes from './routes/auth.js';
+import jobRoutes from './routes/job.js';
 
 const app = express();
 import morgan from 'morgan';
@@ -25,7 +25,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.use('/api/jobs', jobRoutes);
 
 app.get('/', (req, res) => {
     res.json({
