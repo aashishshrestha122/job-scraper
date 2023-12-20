@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
+import Home from './pages/home';
 
 function App() {
+  const SERVER_URL = 'http://localhost:3000/api/jobs/get-all-jobs';
+
+  useEffect(() => {
+    axios.post(SERVER_URL, {
+      page: '',
+      perPage: '50',
+      sortBy: 'id',
+      sortDirection: 'DESC'
+    })
+      .then(function (response) {
+        // handle success
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Home />
   );
 }
 
